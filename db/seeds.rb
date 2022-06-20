@@ -13,7 +13,7 @@ end
 (1..5).map do |i|
   image = Image.new
   filename = i.to_s + '.jpg'
-  image.file.attach(io: File.open('/home/samill/Pictures/' + filename), filename: filename)
+  image.file.attach(io: File.open(Rails.root.join('app', 'tmp', filename)), filename: filename)
   image.save!
 end
 
