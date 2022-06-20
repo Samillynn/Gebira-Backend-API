@@ -1,0 +1,358 @@
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDeceasedPosts (20220619160107)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "deceased_posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "name" varchar, "gender" varchar, "age" integer, "date_of_birth" datetime(6), "date_found" datetime(6), "location" varchar, "vague_location" varchar, "hair_length" varchar, "hair_color" varchar, "skin_color" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dae6366d56"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_deceased_posts_on_user_id" ON "deceased_posts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619160107"]]
+  [1m[36mTRANSACTION (39.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateImages (20220619160200)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "deceased_post_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_be5e411a3d"
+FOREIGN KEY ("deceased_post_id")
+  REFERENCES "deceased_posts" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_images_on_deceased_post_id" ON "images" ("deceased_post_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_images_on_user_id" ON "images" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619160200"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20220619160225)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619160225"]]
+  [1m[36mTRANSACTION (13.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20220619172130)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619172130"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeDeceasedDatetimes (20220619180216)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adeceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" datetime(6) DEFAULT NULL, "date_found" datetime(6) DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adeceased_posts_on_user_id" ON "adeceased_posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "adeceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "deceased_posts"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "deceased_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "deceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" datetime(6) DEFAULT NULL, "date_found" date DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dae6366d56"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_deceased_posts_on_user_id" ON "deceased_posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "adeceased_posts"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "adeceased_posts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adeceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" datetime(6) DEFAULT NULL, "date_found" date DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adeceased_posts_on_user_id" ON "adeceased_posts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "adeceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "deceased_posts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "deceased_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "deceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" date DEFAULT NULL, "date_found" date DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dae6366d56"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_deceased_posts_on_user_id" ON "deceased_posts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "adeceased_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "adeceased_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619180216"]]
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-06-20 15:55:28.729467"], ["updated_at", "2022-06-20 15:55:28.729467"]]
+  [1m[36mTRANSACTION (48.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "//deceased_posts/1" for ::1 at 2022-06-20 23:55:36 +0800
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeceasedPostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mDeceasedPost Load (0.2ms)[0m  [1m[34mSELECT "deceased_posts".* FROM "deceased_posts" WHERE "deceased_posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/deceased_posts_controller.rb:47:in `set_deceased_post'
+Completed 404 Not Found in 26ms (ActiveRecord: 1.3ms | Allocations: 6351)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find DeceasedPost with 'id'=1):
+  
+app/controllers/deceased_posts_controller.rb:47:in `set_deceased_post'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2022-06-20 15:55:58.111061"], ["updated_at", "2022-06-20 15:55:58.111061"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2022-06-20 15:55:58.124652"], ["updated_at", "2022-06-20 15:55:58.124652"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.2ms)[0m  [1m[32mINSERT INTO "images" ("deceased_post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["deceased_post_id", nil], ["user_id", nil], ["created_at", "2022-06-20 15:55:58.169668"], ["updated_at", "2022-06-20 15:55:58.169668"]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "ue1fqyri20ad7inpnyrquyfc184r"], ["filename", "1.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 4129], ["checksum", "QbtvjVBDhWXFtTE+oG4daQ=="], ["created_at", "2022-06-20 15:55:58.199584"]]
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "file"], ["record_type", "Image"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-06-20 15:55:58.201232"]]
+  [1m[36mImage Update (0.1ms)[0m  [1m[33mUPDATE "images" SET "updated_at" = ? WHERE "images"."id" = ?[0m  [["updated_at", "2022-06-20 15:55:58.209163"], ["id", 1]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+[36m  Disk Storage (0.6ms) [0m[32mUploaded file to key: ue1fqyri20ad7inpnyrquyfc184r (checksum: QbtvjVBDhWXFtTE+oG4daQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 183d65fa-3248-43a0-bf4e-235e2ef208f6) to Async(default) with arguments: #<GlobalID:0x000056336003cf20 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("deceased_post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["deceased_post_id", nil], ["user_id", nil], ["created_at", "2022-06-20 15:55:58.222537"], ["updated_at", "2022-06-20 15:55:58.222537"]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "wwuh4ii1wkfqxhj1nss9e94n2tqp"], ["filename", "2.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 3811], ["checksum", "EfYqR1clM9CjbRHricKGJg=="], ["created_at", "2022-06-20 15:55:58.229776"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "file"], ["record_type", "Image"], ["record_id", 2], ["blob_id", 2], ["created_at", "2022-06-20 15:55:58.231589"]]
+  [1m[36mImage Update (0.1ms)[0m  [1m[33mUPDATE "images" SET "updated_at" = ? WHERE "images"."id" = ?[0m  [["updated_at", "2022-06-20 15:55:58.233056"], ["id", 2]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[36mcommit transaction[0m
+[36m  Disk Storage (2.2ms) [0m[32mUploaded file to key: wwuh4ii1wkfqxhj1nss9e94n2tqp (checksum: EfYqR1clM9CjbRHricKGJg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: feec6586-f6d4-4f9c-8afa-08fa41683bcc) to Async(default) with arguments: #<GlobalID:0x000056335ff03cd0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.3ms)[0m  [1m[32mINSERT INTO "images" ("deceased_post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["deceased_post_id", nil], ["user_id", nil], ["created_at", "2022-06-20 15:55:58.246193"], ["updated_at", "2022-06-20 15:55:58.246193"]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "oijbv9lrjv30u824wbbmu718gm5v"], ["filename", "3.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 4207], ["checksum", "kB5zVo9ITsSizsFCSTnUrg=="], ["created_at", "2022-06-20 15:55:58.253261"]]
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "file"], ["record_type", "Image"], ["record_id", 3], ["blob_id", 3], ["created_at", "2022-06-20 15:55:58.255456"]]
+  [1m[36mImage Update (0.1ms)[0m  [1m[33mUPDATE "images" SET "updated_at" = ? WHERE "images"."id" = ?[0m  [["updated_at", "2022-06-20 15:55:58.257445"], ["id", 3]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+[36m  Disk Storage (4.0ms) [0m[32mUploaded file to key: oijbv9lrjv30u824wbbmu718gm5v (checksum: kB5zVo9ITsSizsFCSTnUrg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 17f7d959-26cc-47f2-b66b-e0ee52ab5622) to Async(default) with arguments: #<GlobalID:0x000056335fdbd038 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.5ms)[0m  [1m[32mINSERT INTO "images" ("deceased_post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["deceased_post_id", nil], ["user_id", nil], ["created_at", "2022-06-20 15:55:58.275174"], ["updated_at", "2022-06-20 15:55:58.275174"]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "32348f66jz8n39rwjtkupj36lmew"], ["filename", "4.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 3271], ["checksum", "N6ehLhDYE4FJN5S+ea2k/w=="], ["created_at", "2022-06-20 15:55:58.283071"]]
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "file"], ["record_type", "Image"], ["record_id", 4], ["blob_id", 4], ["created_at", "2022-06-20 15:55:58.285167"]]
+  [1m[36mImage Update (0.1ms)[0m  [1m[33mUPDATE "images" SET "updated_at" = ? WHERE "images"."id" = ?[0m  [["updated_at", "2022-06-20 15:55:58.287113"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6] Performing ActiveStorage::AnalyzeJob (Job ID: 183d65fa-3248-43a0-bf4e-235e2ef208f6) from Async(default) enqueued at 2022-06-20T15:55:58Z with arguments: #<GlobalID:0x000056335fcb9150 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc]   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc] Performing ActiveStorage::AnalyzeJob (Job ID: feec6586-f6d4-4f9c-8afa-08fa41683bcc) from Async(default) enqueued at 2022-06-20T15:55:58Z with arguments: #<GlobalID:0x000056335fc7c7a0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+[36m  Disk Storage (10.6ms) [0m[32mUploaded file to key: 32348f66jz8n39rwjtkupj36lmew (checksum: N6ehLhDYE4FJN5S+ea2k/w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a803bdec-1e9d-41cc-86d3-9b2fe2228082) to Async(default) with arguments: #<GlobalID:0x000056335fc422a8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6] [36m  Disk Storage (2.1ms) [0m[34mDownloaded file from key: ue1fqyri20ad7inpnyrquyfc184r[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc] [36m  Disk Storage (4.2ms) [0m[34mDownloaded file from key: wwuh4ii1wkfqxhj1nss9e94n2tqp[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6]   [1m[36mActiveStorage::Blob Update (0.2ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6]   [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [183d65fa-3248-43a0-bf4e-235e2ef208f6] Performed ActiveStorage::AnalyzeJob (Job ID: 183d65fa-3248-43a0-bf4e-235e2ef208f6) from Async(default) in 67.53ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mImage Create (0.4ms)[0m  [1m[32mINSERT INTO "images" ("deceased_post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["deceased_post_id", nil], ["user_id", nil], ["created_at", "2022-06-20 15:55:58.324369"], ["updated_at", "2022-06-20 15:55:58.324369"]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "Image"], ["name", "file"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "97x3tpkoiftjcotaafb2rfglavfb"], ["filename", "5.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 6562], ["checksum", "MZoU8Q2avbkl/UHtMynSdQ=="], ["created_at", "2022-06-20 15:56:03.371390"]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc]   [1m[36mActiveStorage::Blob Update (5016.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [feec6586-f6d4-4f9c-8afa-08fa41683bcc] Error performing ActiveStorage::AnalyzeJob (Job ID: feec6586-f6d4-4f9c-8afa-08fa41683bcc) from Async(default) in 5076.2ms: ActiveRecord::StatementInvalid (SQLite3::BusyException: database is locked):
+/var/lib/gems/2.7.0/gems/sqlite3-1.4.4/lib/sqlite3/statement.rb:108:in `step'
+/var/lib/gems/2.7.0/gems/sqlite3-1.4.4/lib/sqlite3/statement.rb:108:in `block in each'
+/var/lib/gems/2.7.0/gems/sqlite3-1.4.4/lib/sqlite3/statement.rb:107:in `loop'
+/var/lib/gems/2.7.0/gems/sqlite3-1.4.4/lib/sqlite3/statement.rb:107:in `each'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/sqlite3/database_statements.rb:56:in `to_a'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/sqlite3/database_statements.rb:56:in `block (2 levels) in exec_query'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/sqlite3/database_statements.rb:47:in `block in exec_query'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract_adapter.rb:765:in `block in log'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract_adapter.rb:756:in `log'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/sqlite3/database_statements.rb:46:in `exec_query'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/sqlite3/database_statements.rb:74:in `exec_delete'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract/database_statements.rb:175:in `update'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:22:in `update'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:513:in `_update_record'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:1058:in `_update_row'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/locking/optimistic.rb:88:in `_update_row'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:1080:in `_update_record'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/attribute_methods/dirty.rb:216:in `_update_record'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/callbacks.rb:465:in `block in _update_record'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:107:in `run_callbacks'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:929:in `_run_update_callbacks'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/callbacks.rb:465:in `_update_record'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/timestamp.rb:121:in `_update_record'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:1067:in `create_or_update'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/callbacks.rb:457:in `block in create_or_update'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/autosave_association.rb:370:in `around_save_collection_association'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:929:in `_run_save_callbacks'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/callbacks.rb:457:in `create_or_update'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/timestamp.rb:126:in `create_or_update'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:648:in `save!'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:53:in `save!'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/transactions.rb:302:in `block in save!'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/transactions.rb:354:in `block in with_transaction_returning_status'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract/database_statements.rb:314:in `transaction'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/transactions.rb:350:in `with_transaction_returning_status'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/transactions.rb:302:in `save!'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/suppressor.rb:54:in `save!'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:780:in `block in update!'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/transactions.rb:354:in `block in with_transaction_returning_status'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/connection_adapters/abstract/database_statements.rb:316:in `transaction'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/transactions.rb:350:in `with_transaction_returning_status'
+/var/lib/gems/2.7.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:778:in `update!'
+/var/lib/gems/2.7.0/gems/activestorage-7.0.3/app/models/active_storage/blob/analyzable.rb:29:in `analyze'
+/var/lib/gems/2.7.0/gems/activestorage-7.0.3/app/jobs/active_storage/analyze_job.rb:11:in `perform'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/execution.rb:59:in `block in _perform_job'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/execution.rb:58:in `_perform_job'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/execution.rb:46:in `perform_now'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:35:in `instrument'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `perform_now'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `block in perform_now'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/logging.rb:25:in `tag_logger'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `perform_now'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/execution.rb:24:in `block in execute'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:72:in `block in wrap'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:71:in `wrap'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/var/lib/gems/2.7.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/execution.rb:22:in `execute'
+/var/lib/gems/2.7.0/gems/activejob-7.0.3/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/var/lib/gems/2.7.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/var/lib/gems/2.7.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/var/lib/gems/2.7.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/var/lib/gems/2.7.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/var/lib/gems/2.7.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/var/lib/gems/2.7.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "file"], ["record_type", "Image"], ["record_id", 5], ["blob_id", 5], ["created_at", "2022-06-20 15:56:03.377052"]]
+  [1m[36mImage Update (0.4ms)[0m  [1m[33mUPDATE "images" SET "updated_at" = ? WHERE "images"."id" = ?[0m  [["updated_at", "2022-06-20 15:56:03.389949"], ["id", 5]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622] Performing ActiveStorage::AnalyzeJob (Job ID: 17f7d959-26cc-47f2-b66b-e0ee52ab5622) from Async(default) enqueued at 2022-06-20T15:55:58Z with arguments: #<GlobalID:0x000056335faabd68 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622] [36m  Disk Storage (1.3ms) [0m[34mDownloaded file from key: oijbv9lrjv30u824wbbmu718gm5v[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082] Performing ActiveStorage::AnalyzeJob (Job ID: a803bdec-1e9d-41cc-86d3-9b2fe2228082) from Async(default) enqueued at 2022-06-20T15:55:58Z with arguments: #<GlobalID:0x000056335f6fc190 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+[36m  Disk Storage (21.1ms) [0m[32mUploaded file to key: 97x3tpkoiftjcotaafb2rfglavfb (checksum: MZoU8Q2avbkl/UHtMynSdQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d5ed8172-a0f1-413a-a6bd-130c13c76e6f) to Async(default) with arguments: #<GlobalID:0x00007f473cf251b8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622]   [1m[36mTRANSACTION (8.6ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082] [36m  Disk Storage (0.4ms) [0m[34mDownloaded file from key: 32348f66jz8n39rwjtkupj36lmew[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [17f7d959-26cc-47f2-b66b-e0ee52ab5622] Performed ActiveStorage::AnalyzeJob (Job ID: 17f7d959-26cc-47f2-b66b-e0ee52ab5622) from Async(default) in 48.85ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082]   [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a803bdec-1e9d-41cc-86d3-9b2fe2228082] Performed ActiveStorage::AnalyzeJob (Job ID: a803bdec-1e9d-41cc-86d3-9b2fe2228082) from Async(default) in 60.94ms
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f] Performing ActiveStorage::AnalyzeJob (Job ID: d5ed8172-a0f1-413a-a6bd-130c13c76e6f) from Async(default) enqueued at 2022-06-20T15:56:03Z with arguments: #<GlobalID:0x00007f473ce50490 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f] [36m  Disk Storage (1.2ms) [0m[34mDownloaded file from key: 97x3tpkoiftjcotaafb2rfglavfb[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f]   [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d5ed8172-a0f1-413a-a6bd-130c13c76e6f] Performed ActiveStorage::AnalyzeJob (Job ID: d5ed8172-a0f1-413a-a6bd-130c13c76e6f) from Async(default) in 35.31ms
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDeceasedPost Create (0.3ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("user_id", "name", "gender", "age", "date_of_birth", "date_found", "location", "vague_location", "hair_length", "hair_color", "skin_color", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["name", "ExampleBody1"], ["gender", "male"], ["age", nil], ["date_of_birth", nil], ["date_found", "2022-03-15"], ["location", "xxx.yyyyyy.zzz"], ["vague_location", "A vague location"], ["hair_length", nil], ["hair_color", nil], ["skin_color", nil], ["description", "this is an example deceased"], ["created_at", "2022-06-20 15:56:03.541829"], ["updated_at", "2022-06-20 15:56:03.541829"]]
+  [1m[36mImage Update (0.2ms)[0m  [1m[33mUPDATE "images" SET "deceased_post_id" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["deceased_post_id", 1], ["updated_at", "2022-06-20 15:56:03.545206"], ["id", 1]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDeceasedPost Create (0.3ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("user_id", "name", "gender", "age", "date_of_birth", "date_found", "location", "vague_location", "hair_length", "hair_color", "skin_color", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "ExampleBody2"], ["gender", "male"], ["age", nil], ["date_of_birth", nil], ["date_found", "2022-03-15"], ["location", "xxx.yyyyyy.zzz"], ["vague_location", "A vague location"], ["hair_length", nil], ["hair_color", nil], ["skin_color", nil], ["description", "this is an example deceased"], ["created_at", "2022-06-20 15:56:03.556822"], ["updated_at", "2022-06-20 15:56:03.556822"]]
+  [1m[36mImage Update (0.2ms)[0m  [1m[33mUPDATE "images" SET "deceased_post_id" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["deceased_post_id", 2], ["updated_at", "2022-06-20 15:56:03.559312"], ["id", 2]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDeceasedPost Create (0.3ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("user_id", "name", "gender", "age", "date_of_birth", "date_found", "location", "vague_location", "hair_length", "hair_color", "skin_color", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["name", "ExampleBody3"], ["gender", "male"], ["age", nil], ["date_of_birth", nil], ["date_found", "2022-03-15"], ["location", "xxx.yyyyyy.zzz"], ["vague_location", "A vague location"], ["hair_length", nil], ["hair_color", nil], ["skin_color", nil], ["description", "this is an example deceased"], ["created_at", "2022-06-20 15:56:03.569045"], ["updated_at", "2022-06-20 15:56:03.569045"]]
+  [1m[36mImage Update (0.3ms)[0m  [1m[33mUPDATE "images" SET "deceased_post_id" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["deceased_post_id", 3], ["updated_at", "2022-06-20 15:56:03.572663"], ["id", 3]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ?[0m  [["id", 4]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDeceasedPost Create (0.2ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("user_id", "name", "gender", "age", "date_of_birth", "date_found", "location", "vague_location", "hair_length", "hair_color", "skin_color", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "ExampleBody4"], ["gender", "male"], ["age", nil], ["date_of_birth", nil], ["date_found", "2022-03-15"], ["location", "xxx.yyyyyy.zzz"], ["vague_location", "A vague location"], ["hair_length", nil], ["hair_color", nil], ["skin_color", nil], ["description", "this is an example deceased"], ["created_at", "2022-06-20 15:56:03.582000"], ["updated_at", "2022-06-20 15:56:03.582000"]]
+  [1m[36mImage Update (0.1ms)[0m  [1m[33mUPDATE "images" SET "deceased_post_id" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["deceased_post_id", 4], ["updated_at", "2022-06-20 15:56:03.584186"], ["id", 4]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ?[0m  [["id", 5]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDeceasedPost Create (0.2ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("user_id", "name", "gender", "age", "date_of_birth", "date_found", "location", "vague_location", "hair_length", "hair_color", "skin_color", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 2], ["name", "ExampleBody5"], ["gender", "male"], ["age", nil], ["date_of_birth", nil], ["date_found", "2022-03-15"], ["location", "xxx.yyyyyy.zzz"], ["vague_location", "A vague location"], ["hair_length", nil], ["hair_color", nil], ["skin_color", nil], ["description", "this is an example deceased"], ["created_at", "2022-06-20 15:56:03.593210"], ["updated_at", "2022-06-20 15:56:03.593210"]]
+  [1m[36mImage Update (0.1ms)[0m  [1m[33mUPDATE "images" SET "deceased_post_id" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["deceased_post_id", 5], ["updated_at", "2022-06-20 15:56:03.595617"], ["id", 5]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "//deceased_posts/1" for ::1 at 2022-06-20 23:56:21 +0800
+Processing by DeceasedPostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mDeceasedPost Load (0.2ms)[0m  [1m[34mSELECT "deceased_posts".* FROM "deceased_posts" WHERE "deceased_posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/deceased_posts_controller.rb:47:in `set_deceased_post'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/deceased_posts_controller.rb:16:in `show'
+[active_model_serializers] Rendered DeceasedPostSerializer with ActiveModelSerializers::Adapter::Attributes (20.38ms)
+Completed 200 OK in 102ms (Views: 41.5ms | ActiveRecord: 1.1ms | Allocations: 34271)
+
+
