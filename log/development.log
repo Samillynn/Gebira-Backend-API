@@ -356,3 +356,112 @@ Processing by DeceasedPostsController#show as */*
 Completed 200 OK in 102ms (Views: 41.5ms | ActiveRecord: 1.1ms | Allocations: 34271)
 
 
+  [1m[35m (34.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  [1m[36mDeceasedPost Load (0.5ms)[0m  [1m[34mSELECT "deceased_posts".* FROM "deceased_posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images" WHERE "images"."id" = ?[0m  [["id", 10]]
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (100.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (92.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDeceasedPosts (20220619160107)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "deceased_posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "name" varchar, "gender" varchar, "age" integer, "date_of_birth" datetime(6), "date_found" datetime(6), "location" varchar, "vague_location" varchar, "hair_length" varchar, "hair_color" varchar, "skin_color" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dae6366d56"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_deceased_posts_on_user_id" ON "deceased_posts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619160107"]]
+  [1m[36mTRANSACTION (86.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateImages (20220619160200)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "deceased_post_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_be5e411a3d"
+FOREIGN KEY ("deceased_post_id")
+  REFERENCES "deceased_posts" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_images_on_deceased_post_id" ON "images" ("deceased_post_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_images_on_user_id" ON "images" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619160200"]]
+  [1m[36mTRANSACTION (273.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20220619160225)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619160225"]]
+  [1m[36mTRANSACTION (277.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20220619172130)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619172130"]]
+  [1m[36mTRANSACTION (286.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to ChangeDeceasedDatetimes (20220619180216)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adeceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" datetime(6) DEFAULT NULL, "date_found" datetime(6) DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adeceased_posts_on_user_id" ON "adeceased_posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "adeceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "deceased_posts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "deceased_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "deceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" datetime(6) DEFAULT NULL, "date_found" date DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dae6366d56"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_deceased_posts_on_user_id" ON "deceased_posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "adeceased_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "adeceased_posts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adeceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" datetime(6) DEFAULT NULL, "date_found" date DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adeceased_posts_on_user_id" ON "adeceased_posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "adeceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "deceased_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "deceased_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "deceased_posts" ("id" integer NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "name" varchar DEFAULT NULL, "gender" varchar DEFAULT NULL, "age" integer DEFAULT NULL, "date_of_birth" date DEFAULT NULL, "date_found" date DEFAULT NULL, "location" varchar DEFAULT NULL, "vague_location" varchar DEFAULT NULL, "hair_length" varchar DEFAULT NULL, "hair_color" varchar DEFAULT NULL, "skin_color" varchar DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dae6366d56"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_deceased_posts_on_user_id" ON "deceased_posts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "deceased_posts" ("id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at")
+                     SELECT "id","user_id","name","gender","age","date_of_birth","date_found","location","vague_location","hair_length","hair_color","skin_color","description","created_at","updated_at" FROM "adeceased_posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "adeceased_posts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220619180216"]]
+  [1m[36mTRANSACTION (143.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-06-20 21:32:03.320101"], ["updated_at", "2022-06-20 21:32:03.320101"]]
+  [1m[36mTRANSACTION (71.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

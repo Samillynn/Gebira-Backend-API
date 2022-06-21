@@ -1,0 +1,299 @@
+W, [2022-06-20T02:16:53.136329 #14475]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:16:53.645490 #14475]  INFO -- : Migrating to CreateDeceasedPosts (20220619160107)
+I, [2022-06-20T02:16:53.896514 #14475]  INFO -- : Migrating to CreateImages (20220619160200)
+I, [2022-06-20T02:16:54.227428 #14475]  INFO -- : Migrating to CreateUsers (20220619160225)
+I, [2022-06-20T02:16:54.367253 #14475]  INFO -- : Migrating to CreateActiveStorageTables (20220619172130)
+I, [2022-06-20T02:16:54.468851 #14475]  INFO -- : Migrating to ChangeDeceasedDatetimes (20220619180216)
+W, [2022-06-20T02:17:06.308774 #14499]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:17:49.482325 #14499]  INFO -- : [a8c87302-e293-450f-8f01-7c4b21e450b2] Started GET "/" for 10.16.33.253 at 2022-06-20 02:17:49 +0800
+F, [2022-06-20T02:17:49.482786 #14499] FATAL -- : [a8c87302-e293-450f-8f01-7c4b21e450b2]   
+[a8c87302-e293-450f-8f01-7c4b21e450b2] ActionController::RoutingError (No route matches [GET] "/"):
+[a8c87302-e293-450f-8f01-7c4b21e450b2]   
+I, [2022-06-20T02:17:49.552639 #14499]  INFO -- : [f11f8ce5-fc22-4316-84d5-d1742ac751ae] Started GET "/favicon.ico" for 10.16.33.253 at 2022-06-20 02:17:49 +0800
+F, [2022-06-20T02:17:49.552863 #14499] FATAL -- : [f11f8ce5-fc22-4316-84d5-d1742ac751ae]   
+[f11f8ce5-fc22-4316-84d5-d1742ac751ae] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[f11f8ce5-fc22-4316-84d5-d1742ac751ae]   
+I, [2022-06-20T02:17:57.587953 #14499]  INFO -- : [e2d6b177-af30-4f43-a2ae-3cb28cb47871] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:17:57 +0800
+I, [2022-06-20T02:17:57.589214 #14499]  INFO -- : [e2d6b177-af30-4f43-a2ae-3cb28cb47871] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:17:57.593256 #14499]  INFO -- : [e2d6b177-af30-4f43-a2ae-3cb28cb47871] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+I, [2022-06-20T02:17:57.593547 #14499]  INFO -- : [e2d6b177-af30-4f43-a2ae-3cb28cb47871] Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.8ms | Allocations: 1257)
+I, [2022-06-20T02:18:07.530670 #14499]  INFO -- : [2065c623-b0e7-4ce6-b002-307baf47ed6d] Started GET "/images/1" for 10.16.33.253 at 2022-06-20 02:18:07 +0800
+I, [2022-06-20T02:18:07.531259 #14499]  INFO -- : [2065c623-b0e7-4ce6-b002-307baf47ed6d] Processing by ImagesController#show as HTML
+I, [2022-06-20T02:18:07.531308 #14499]  INFO -- : [2065c623-b0e7-4ce6-b002-307baf47ed6d]   Parameters: {"id"=>"1"}
+I, [2022-06-20T02:18:07.534599 #14499]  INFO -- : [2065c623-b0e7-4ce6-b002-307baf47ed6d] Completed 404 Not Found in 3ms (ActiveRecord: 0.8ms | Allocations: 1135)
+F, [2022-06-20T02:18:07.534966 #14499] FATAL -- : [2065c623-b0e7-4ce6-b002-307baf47ed6d]   
+[2065c623-b0e7-4ce6-b002-307baf47ed6d] ActiveRecord::RecordNotFound (Couldn't find Image with 'id'=1):
+[2065c623-b0e7-4ce6-b002-307baf47ed6d]   
+[2065c623-b0e7-4ce6-b002-307baf47ed6d] app/controllers/images_controller.rb:44:in `set_image'
+I, [2022-06-20T02:18:43.909396 #14499]  INFO -- : [ba7cee14-6c3c-46e2-8747-9da6dcc69a85] Started GET "/deceased_posts" for 10.16.33.253 at 2022-06-20 02:18:43 +0800
+I, [2022-06-20T02:18:43.910185 #14499]  INFO -- : [ba7cee14-6c3c-46e2-8747-9da6dcc69a85] Processing by DeceasedPostsController#index as HTML
+I, [2022-06-20T02:18:43.913087 #14499]  INFO -- : [ba7cee14-6c3c-46e2-8747-9da6dcc69a85] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.05ms)
+I, [2022-06-20T02:18:43.913275 #14499]  INFO -- : [ba7cee14-6c3c-46e2-8747-9da6dcc69a85] Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1249)
+W, [2022-06-20T02:19:44.894110 #14802]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:19:45.879540 #14802]  INFO -- : [f549204b-9bea-424f-b1a7-bcf6d84b1df3] Started GET "/" for 10.16.33.253 at 2022-06-20 02:19:45 +0800
+F, [2022-06-20T02:19:45.879894 #14802] FATAL -- : [f549204b-9bea-424f-b1a7-bcf6d84b1df3]   
+[f549204b-9bea-424f-b1a7-bcf6d84b1df3] ActionController::RoutingError (No route matches [GET] "/"):
+[f549204b-9bea-424f-b1a7-bcf6d84b1df3]   
+I, [2022-06-20T02:19:45.923562 #14802]  INFO -- : [2102368d-184c-40e4-a8d0-a2dcaff82c89] Started GET "/favicon.ico" for 10.16.33.253 at 2022-06-20 02:19:45 +0800
+F, [2022-06-20T02:19:45.923818 #14802] FATAL -- : [2102368d-184c-40e4-a8d0-a2dcaff82c89]   
+[2102368d-184c-40e4-a8d0-a2dcaff82c89] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[2102368d-184c-40e4-a8d0-a2dcaff82c89]   
+W, [2022-06-20T02:20:49.103503 #14885]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:20:49.365208 #14885]  INFO -- : [36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: bdacsnwi22u030csbdbsnxx5vix0 (checksum: QbtvjVBDhWXFtTE+oG4daQ==)[0m
+I, [2022-06-20T02:20:49.365969 #14885]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 472e466c-6fe2-4cf2-93a0-91f0beadc3af) to Async(default) with arguments: #<GlobalID:0x00005606a175b388 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+I, [2022-06-20T02:20:49.367935 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [472e466c-6fe2-4cf2-93a0-91f0beadc3af] Performing ActiveStorage::AnalyzeJob (Job ID: 472e466c-6fe2-4cf2-93a0-91f0beadc3af) from Async(default) enqueued at 2022-06-19T18:20:49Z with arguments: #<GlobalID:0x00005606a10ef3a0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+I, [2022-06-20T02:20:49.440878 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [472e466c-6fe2-4cf2-93a0-91f0beadc3af] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: bdacsnwi22u030csbdbsnxx5vix0[0m
+I, [2022-06-20T02:20:49.441702 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [472e466c-6fe2-4cf2-93a0-91f0beadc3af] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:20:49.757449 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [472e466c-6fe2-4cf2-93a0-91f0beadc3af] Performed ActiveStorage::AnalyzeJob (Job ID: 472e466c-6fe2-4cf2-93a0-91f0beadc3af) from Async(default) in 391.11ms
+I, [2022-06-20T02:20:49.758535 #14885]  INFO -- : [36m  Disk Storage (318.6ms) [0m[32mUploaded file to key: u2z8m7tq6nvvktuu26kx1slrg7xa (checksum: EfYqR1clM9CjbRHricKGJg==)[0m
+I, [2022-06-20T02:20:49.759682 #14885]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: ea2b979b-2dcf-45ae-9353-4f8e01d963d9) to Async(default) with arguments: #<GlobalID:0x00005606a2f4a930 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+I, [2022-06-20T02:20:49.762469 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [ea2b979b-2dcf-45ae-9353-4f8e01d963d9] Performing ActiveStorage::AnalyzeJob (Job ID: ea2b979b-2dcf-45ae-9353-4f8e01d963d9) from Async(default) enqueued at 2022-06-19T18:20:49Z with arguments: #<GlobalID:0x00005606a2eb9610 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+I, [2022-06-20T02:20:49.764841 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [ea2b979b-2dcf-45ae-9353-4f8e01d963d9] [36m  Disk Storage (0.5ms) [0m[34mDownloaded file from key: u2z8m7tq6nvvktuu26kx1slrg7xa[0m
+I, [2022-06-20T02:20:49.767713 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [ea2b979b-2dcf-45ae-9353-4f8e01d963d9] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:20:49.948853 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [ea2b979b-2dcf-45ae-9353-4f8e01d963d9] Performed ActiveStorage::AnalyzeJob (Job ID: ea2b979b-2dcf-45ae-9353-4f8e01d963d9) from Async(default) in 188.54ms
+I, [2022-06-20T02:20:50.174406 #14885]  INFO -- : [36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: qv130152itbrpr8iutvi6ign3d0p (checksum: kB5zVo9ITsSizsFCSTnUrg==)[0m
+I, [2022-06-20T02:20:50.175538 #14885]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 84c6dcdd-033a-450d-8f0e-49f5e9f221ea) to Async(default) with arguments: #<GlobalID:0x00005606a2c4e420 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+I, [2022-06-20T02:20:50.178006 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [84c6dcdd-033a-450d-8f0e-49f5e9f221ea] Performing ActiveStorage::AnalyzeJob (Job ID: 84c6dcdd-033a-450d-8f0e-49f5e9f221ea) from Async(default) enqueued at 2022-06-19T18:20:50Z with arguments: #<GlobalID:0x00005606a2c3dbc0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+I, [2022-06-20T02:20:50.180677 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [84c6dcdd-033a-450d-8f0e-49f5e9f221ea] [36m  Disk Storage (0.5ms) [0m[34mDownloaded file from key: qv130152itbrpr8iutvi6ign3d0p[0m
+I, [2022-06-20T02:20:50.183869 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [84c6dcdd-033a-450d-8f0e-49f5e9f221ea] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:20:50.473629 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [84c6dcdd-033a-450d-8f0e-49f5e9f221ea] Performed ActiveStorage::AnalyzeJob (Job ID: 84c6dcdd-033a-450d-8f0e-49f5e9f221ea) from Async(default) in 297.47ms
+I, [2022-06-20T02:20:50.475801 #14885]  INFO -- : [36m  Disk Storage (1.5ms) [0m[32mUploaded file to key: gayvp0th3cytav2w8bk1blrd7lo5 (checksum: N6ehLhDYE4FJN5S+ea2k/w==)[0m
+I, [2022-06-20T02:20:50.476872 #14885]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 173a60cc-47ea-4aef-9efc-cc7be808db13) to Async(default) with arguments: #<GlobalID:0x00005606a27e09d8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+I, [2022-06-20T02:20:50.479451 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [173a60cc-47ea-4aef-9efc-cc7be808db13] Performing ActiveStorage::AnalyzeJob (Job ID: 173a60cc-47ea-4aef-9efc-cc7be808db13) from Async(default) enqueued at 2022-06-19T18:20:50Z with arguments: #<GlobalID:0x00005606a2729670 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+I, [2022-06-20T02:20:50.481805 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [173a60cc-47ea-4aef-9efc-cc7be808db13] [36m  Disk Storage (0.6ms) [0m[34mDownloaded file from key: gayvp0th3cytav2w8bk1blrd7lo5[0m
+I, [2022-06-20T02:20:50.484798 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [173a60cc-47ea-4aef-9efc-cc7be808db13] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:20:50.573710 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [173a60cc-47ea-4aef-9efc-cc7be808db13] Performed ActiveStorage::AnalyzeJob (Job ID: 173a60cc-47ea-4aef-9efc-cc7be808db13) from Async(default) in 96.17ms
+I, [2022-06-20T02:20:50.669498 #14885]  INFO -- : [36m  Disk Storage (1.0ms) [0m[32mUploaded file to key: 7lnhdpny6hjwqa8l0ke0o8s2yrru (checksum: MZoU8Q2avbkl/UHtMynSdQ==)[0m
+I, [2022-06-20T02:20:50.670659 #14885]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: bf755a78-c299-46de-b4a9-19d5759283a1) to Async(default) with arguments: #<GlobalID:0x00005606a101fcb8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+I, [2022-06-20T02:20:50.675709 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [bf755a78-c299-46de-b4a9-19d5759283a1] Performing ActiveStorage::AnalyzeJob (Job ID: bf755a78-c299-46de-b4a9-19d5759283a1) from Async(default) enqueued at 2022-06-19T18:20:50Z with arguments: #<GlobalID:0x00005606a15789f8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+I, [2022-06-20T02:20:51.107342 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [bf755a78-c299-46de-b4a9-19d5759283a1] [36m  Disk Storage (76.1ms) [0m[34mDownloaded file from key: 7lnhdpny6hjwqa8l0ke0o8s2yrru[0m
+I, [2022-06-20T02:20:51.107467 #14885]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [bf755a78-c299-46de-b4a9-19d5759283a1] Performed ActiveStorage::AnalyzeJob (Job ID: bf755a78-c299-46de-b4a9-19d5759283a1) from Async(default) in 436.19ms
+W, [2022-06-20T02:20:58.655753 #14912]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:20:59.053730 #14912]  INFO -- : [a8ccb40e-8d19-4f3c-9c25-2f42edf051d6] Started GET "/" for 10.16.33.253 at 2022-06-20 02:20:59 +0800
+F, [2022-06-20T02:20:59.054148 #14912] FATAL -- : [a8ccb40e-8d19-4f3c-9c25-2f42edf051d6]   
+[a8ccb40e-8d19-4f3c-9c25-2f42edf051d6] ActionController::RoutingError (No route matches [GET] "/"):
+[a8ccb40e-8d19-4f3c-9c25-2f42edf051d6]   
+I, [2022-06-20T02:21:02.113611 #14912]  INFO -- : [513022ce-dce2-437d-a190-4a2976dc2621] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:21:02 +0800
+I, [2022-06-20T02:21:02.114209 #14912]  INFO -- : [513022ce-dce2-437d-a190-4a2976dc2621] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:21:02.127667 #14912]  INFO -- : [513022ce-dce2-437d-a190-4a2976dc2621] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.4ms)
+I, [2022-06-20T02:21:02.127799 #14912]  INFO -- : [513022ce-dce2-437d-a190-4a2976dc2621] Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.5ms | Allocations: 12042)
+F, [2022-06-20T02:21:02.128193 #14912] FATAL -- : [513022ce-dce2-437d-a190-4a2976dc2621]   
+[513022ce-dce2-437d-a190-4a2976dc2621] ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+[513022ce-dce2-437d-a190-4a2976dc2621]   
+[513022ce-dce2-437d-a190-4a2976dc2621] app/models/image.rb:8:in `url'
+[513022ce-dce2-437d-a190-4a2976dc2621] app/controllers/images_controller.rb:8:in `index'
+I, [2022-06-20T02:21:10.573545 #14912]  INFO -- : [e58afe5f-413e-4630-94bc-f8d042f34d30] Started GET "/deceased_posts" for 10.16.33.253 at 2022-06-20 02:21:10 +0800
+I, [2022-06-20T02:21:10.574394 #14912]  INFO -- : [e58afe5f-413e-4630-94bc-f8d042f34d30] Processing by DeceasedPostsController#index as HTML
+I, [2022-06-20T02:21:10.593910 #14912]  INFO -- : [e58afe5f-413e-4630-94bc-f8d042f34d30] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.56ms)
+I, [2022-06-20T02:21:10.594181 #14912]  INFO -- : [e58afe5f-413e-4630-94bc-f8d042f34d30] Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 1.7ms | Allocations: 10167)
+I, [2022-06-20T02:21:18.521557 #14912]  INFO -- : [554d5a64-9e23-46c4-ad26-19e3eeac33aa] Started GET "/deceased_posts/images/1" for 10.16.33.253 at 2022-06-20 02:21:18 +0800
+F, [2022-06-20T02:21:18.521844 #14912] FATAL -- : [554d5a64-9e23-46c4-ad26-19e3eeac33aa]   
+[554d5a64-9e23-46c4-ad26-19e3eeac33aa] ActionController::RoutingError (No route matches [GET] "/deceased_posts/images/1"):
+[554d5a64-9e23-46c4-ad26-19e3eeac33aa]   
+I, [2022-06-20T02:21:31.573605 #14912]  INFO -- : [7e56373d-0899-46b5-8877-861d2878aafe] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:21:31 +0800
+I, [2022-06-20T02:21:31.574274 #14912]  INFO -- : [7e56373d-0899-46b5-8877-861d2878aafe] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:21:31.578283 #14912]  INFO -- : [7e56373d-0899-46b5-8877-861d2878aafe] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.6ms)
+I, [2022-06-20T02:21:31.578520 #14912]  INFO -- : [7e56373d-0899-46b5-8877-861d2878aafe] Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1284)
+F, [2022-06-20T02:21:31.579185 #14912] FATAL -- : [7e56373d-0899-46b5-8877-861d2878aafe]   
+[7e56373d-0899-46b5-8877-861d2878aafe] ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+[7e56373d-0899-46b5-8877-861d2878aafe]   
+[7e56373d-0899-46b5-8877-861d2878aafe] app/models/image.rb:8:in `url'
+[7e56373d-0899-46b5-8877-861d2878aafe] app/controllers/images_controller.rb:8:in `index'
+I, [2022-06-20T02:21:33.888629 #14912]  INFO -- : [261f15e5-12ea-4041-8e54-511878fab121] Started GET "/images/1" for 10.16.33.253 at 2022-06-20 02:21:33 +0800
+I, [2022-06-20T02:21:33.889095 #14912]  INFO -- : [261f15e5-12ea-4041-8e54-511878fab121] Processing by ImagesController#show as HTML
+I, [2022-06-20T02:21:33.889134 #14912]  INFO -- : [261f15e5-12ea-4041-8e54-511878fab121]   Parameters: {"id"=>"1"}
+I, [2022-06-20T02:21:33.891756 #14912]  INFO -- : [261f15e5-12ea-4041-8e54-511878fab121] [active_model_serializers] Rendered ImageSerializer with ActiveModelSerializers::Adapter::Attributes (1.58ms)
+I, [2022-06-20T02:21:33.891864 #14912]  INFO -- : [261f15e5-12ea-4041-8e54-511878fab121] Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms | Allocations: 1151)
+F, [2022-06-20T02:21:33.892352 #14912] FATAL -- : [261f15e5-12ea-4041-8e54-511878fab121]   
+[261f15e5-12ea-4041-8e54-511878fab121] ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+[261f15e5-12ea-4041-8e54-511878fab121]   
+[261f15e5-12ea-4041-8e54-511878fab121] app/models/image.rb:8:in `url'
+[261f15e5-12ea-4041-8e54-511878fab121] app/controllers/images_controller.rb:13:in `show'
+I, [2022-06-20T02:21:39.156372 #14912]  INFO -- : [eedf4d90-615a-49d4-85fe-056cbc816b18] Started GET "/deceased_posts" for 10.16.33.253 at 2022-06-20 02:21:39 +0800
+I, [2022-06-20T02:21:39.156872 #14912]  INFO -- : [eedf4d90-615a-49d4-85fe-056cbc816b18] Processing by DeceasedPostsController#index as HTML
+I, [2022-06-20T02:21:39.161942 #14912]  INFO -- : [eedf4d90-615a-49d4-85fe-056cbc816b18] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.0ms)
+I, [2022-06-20T02:21:39.162118 #14912]  INFO -- : [eedf4d90-615a-49d4-85fe-056cbc816b18] Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 2974)
+I, [2022-06-20T02:21:44.121085 #14912]  INFO -- : [02ee6ce1-afc5-4d23-b232-572654849ddc] Started GET "/user" for 10.16.33.253 at 2022-06-20 02:21:44 +0800
+F, [2022-06-20T02:21:44.121643 #14912] FATAL -- : [02ee6ce1-afc5-4d23-b232-572654849ddc]   
+[02ee6ce1-afc5-4d23-b232-572654849ddc] ActionController::RoutingError (No route matches [GET] "/user"):
+[02ee6ce1-afc5-4d23-b232-572654849ddc]   
+I, [2022-06-20T02:21:46.108614 #14912]  INFO -- : [cb405cf5-db95-4b4a-93fd-66829c022f36] Started GET "/users" for 10.16.33.253 at 2022-06-20 02:21:46 +0800
+I, [2022-06-20T02:21:46.109128 #14912]  INFO -- : [cb405cf5-db95-4b4a-93fd-66829c022f36] Processing by UsersController#index as HTML
+I, [2022-06-20T02:21:46.110234 #14912]  INFO -- : [cb405cf5-db95-4b4a-93fd-66829c022f36] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+I, [2022-06-20T02:21:46.110379 #14912]  INFO -- : [cb405cf5-db95-4b4a-93fd-66829c022f36] Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 514)
+I, [2022-06-20T02:21:50.334838 #14912]  INFO -- : [852cbf74-8463-400e-a763-e1045390d829] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:21:50 +0800
+I, [2022-06-20T02:21:50.335795 #14912]  INFO -- : [852cbf74-8463-400e-a763-e1045390d829] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:21:50.340293 #14912]  INFO -- : [852cbf74-8463-400e-a763-e1045390d829] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.21ms)
+I, [2022-06-20T02:21:50.340584 #14912]  INFO -- : [852cbf74-8463-400e-a763-e1045390d829] Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1261)
+F, [2022-06-20T02:21:50.341455 #14912] FATAL -- : [852cbf74-8463-400e-a763-e1045390d829]   
+[852cbf74-8463-400e-a763-e1045390d829] ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+[852cbf74-8463-400e-a763-e1045390d829]   
+[852cbf74-8463-400e-a763-e1045390d829] app/models/image.rb:8:in `url'
+[852cbf74-8463-400e-a763-e1045390d829] app/controllers/images_controller.rb:8:in `index'
+W, [2022-06-20T02:25:35.659125 #15253]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-20T02:26:00.267329 #15273]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:26:00.497347 #15273]  INFO -- : Migrating to CreateDeceasedPosts (20220619160107)
+I, [2022-06-20T02:26:00.628273 #15273]  INFO -- : Migrating to CreateImages (20220619160200)
+I, [2022-06-20T02:26:00.889436 #15273]  INFO -- : Migrating to CreateUsers (20220619160225)
+I, [2022-06-20T02:26:01.151751 #15273]  INFO -- : Migrating to CreateActiveStorageTables (20220619172130)
+I, [2022-06-20T02:26:01.439503 #15273]  INFO -- : Migrating to ChangeDeceasedDatetimes (20220619180216)
+I, [2022-06-20T02:26:01.924504 #15273]  INFO -- : [36m  Disk Storage (1.0ms) [0m[32mUploaded file to key: siqyexx696kyjfab5xo86608qijc (checksum: QbtvjVBDhWXFtTE+oG4daQ==)[0m
+I, [2022-06-20T02:26:01.927170 #15273]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 6d59e400-1c77-4e50-a9ee-f13459c90c22) to Async(default) with arguments: #<GlobalID:0x000055c2a4505ef8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+I, [2022-06-20T02:26:01.935688 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [6d59e400-1c77-4e50-a9ee-f13459c90c22] Performing ActiveStorage::AnalyzeJob (Job ID: 6d59e400-1c77-4e50-a9ee-f13459c90c22) from Async(default) enqueued at 2022-06-19T18:26:01Z with arguments: #<GlobalID:0x00007fbe700180e8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+I, [2022-06-20T02:26:01.938993 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [6d59e400-1c77-4e50-a9ee-f13459c90c22] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: siqyexx696kyjfab5xo86608qijc[0m
+I, [2022-06-20T02:26:01.939299 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [6d59e400-1c77-4e50-a9ee-f13459c90c22] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:26:02.108325 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [6d59e400-1c77-4e50-a9ee-f13459c90c22] Performed ActiveStorage::AnalyzeJob (Job ID: 6d59e400-1c77-4e50-a9ee-f13459c90c22) from Async(default) in 180.27ms
+I, [2022-06-20T02:26:02.108738 #15273]  INFO -- : [36m  Disk Storage (75.0ms) [0m[32mUploaded file to key: vawmlcidyvi8bx5lzdk1atpl5k41 (checksum: EfYqR1clM9CjbRHricKGJg==)[0m
+I, [2022-06-20T02:26:02.109067 #15273]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 26b93bf6-60f2-4c15-aa9e-2849f77cd8da) to Async(default) with arguments: #<GlobalID:0x000055c2a5a8af30 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+I, [2022-06-20T02:26:02.109746 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [26b93bf6-60f2-4c15-aa9e-2849f77cd8da] Performing ActiveStorage::AnalyzeJob (Job ID: 26b93bf6-60f2-4c15-aa9e-2849f77cd8da) from Async(default) enqueued at 2022-06-19T18:26:02Z with arguments: #<GlobalID:0x000055c2a4415368 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+I, [2022-06-20T02:26:02.110279 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [26b93bf6-60f2-4c15-aa9e-2849f77cd8da] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: vawmlcidyvi8bx5lzdk1atpl5k41[0m
+I, [2022-06-20T02:26:02.110428 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [26b93bf6-60f2-4c15-aa9e-2849f77cd8da] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:26:02.183345 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [26b93bf6-60f2-4c15-aa9e-2849f77cd8da] Performed ActiveStorage::AnalyzeJob (Job ID: 26b93bf6-60f2-4c15-aa9e-2849f77cd8da) from Async(default) in 74.12ms
+I, [2022-06-20T02:26:02.267530 #15273]  INFO -- : [36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: g3s4o6t0l8i00vd4cup7jh5g2k8k (checksum: kB5zVo9ITsSizsFCSTnUrg==)[0m
+I, [2022-06-20T02:26:02.267858 #15273]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1d3956c5-57ec-4e9b-aa64-352e792fabac) to Async(default) with arguments: #<GlobalID:0x000055c2a5aa0df8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+I, [2022-06-20T02:26:02.268641 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [1d3956c5-57ec-4e9b-aa64-352e792fabac] Performing ActiveStorage::AnalyzeJob (Job ID: 1d3956c5-57ec-4e9b-aa64-352e792fabac) from Async(default) enqueued at 2022-06-19T18:26:02Z with arguments: #<GlobalID:0x00007fbe700823a8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+I, [2022-06-20T02:26:02.269297 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [1d3956c5-57ec-4e9b-aa64-352e792fabac] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: g3s4o6t0l8i00vd4cup7jh5g2k8k[0m
+I, [2022-06-20T02:26:02.627213 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [1d3956c5-57ec-4e9b-aa64-352e792fabac] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:26:02.809535 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [1d3956c5-57ec-4e9b-aa64-352e792fabac] Performed ActiveStorage::AnalyzeJob (Job ID: 1d3956c5-57ec-4e9b-aa64-352e792fabac) from Async(default) in 541.4ms
+I, [2022-06-20T02:26:02.810787 #15273]  INFO -- : [36m  Disk Storage (184.4ms) [0m[32mUploaded file to key: z5p6k5zhnk450jmwpdzq6gnvlwyf (checksum: N6ehLhDYE4FJN5S+ea2k/w==)[0m
+I, [2022-06-20T02:26:02.811273 #15273]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f97f093f-25b2-44fe-aacd-6e4109cb88ee) to Async(default) with arguments: #<GlobalID:0x000055c2a5ab3480 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+I, [2022-06-20T02:26:02.812187 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [f97f093f-25b2-44fe-aacd-6e4109cb88ee] Performing ActiveStorage::AnalyzeJob (Job ID: f97f093f-25b2-44fe-aacd-6e4109cb88ee) from Async(default) enqueued at 2022-06-19T18:26:02Z with arguments: #<GlobalID:0x000055c2a3e05978 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+I, [2022-06-20T02:26:02.812947 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [f97f093f-25b2-44fe-aacd-6e4109cb88ee] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: z5p6k5zhnk450jmwpdzq6gnvlwyf[0m
+I, [2022-06-20T02:26:02.813180 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [f97f093f-25b2-44fe-aacd-6e4109cb88ee] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:26:03.017724 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [f97f093f-25b2-44fe-aacd-6e4109cb88ee] Performed ActiveStorage::AnalyzeJob (Job ID: f97f093f-25b2-44fe-aacd-6e4109cb88ee) from Async(default) in 206.15ms
+I, [2022-06-20T02:26:03.272870 #15273]  INFO -- : [36m  Disk Storage (0.4ms) [0m[32mUploaded file to key: vv2um3o0z3fs9sxzaqimbj9joqs4 (checksum: MZoU8Q2avbkl/UHtMynSdQ==)[0m
+I, [2022-06-20T02:26:03.273378 #15273]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0271b488-25bc-4325-822f-a1645f97d5d2) to Async(default) with arguments: #<GlobalID:0x000055c2a5ad7cb8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+I, [2022-06-20T02:26:03.274488 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [0271b488-25bc-4325-822f-a1645f97d5d2] Performing ActiveStorage::AnalyzeJob (Job ID: 0271b488-25bc-4325-822f-a1645f97d5d2) from Async(default) enqueued at 2022-06-19T18:26:03Z with arguments: #<GlobalID:0x000055c2a5ad4720 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+I, [2022-06-20T02:26:03.762663 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [0271b488-25bc-4325-822f-a1645f97d5d2] [36m  Disk Storage (1.1ms) [0m[34mDownloaded file from key: vv2um3o0z3fs9sxzaqimbj9joqs4[0m
+I, [2022-06-20T02:26:03.763123 #15273]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [0271b488-25bc-4325-822f-a1645f97d5d2] Performed ActiveStorage::AnalyzeJob (Job ID: 0271b488-25bc-4325-822f-a1645f97d5d2) from Async(default) in 489.39ms
+W, [2022-06-20T02:26:11.045368 #15299]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-20T02:26:12.409939 #15299]  INFO -- : [8bccd6b8-b079-4df8-9a89-9d8955f41312] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:26:12 +0800
+I, [2022-06-20T02:26:12.411005 #15299]  INFO -- : [8bccd6b8-b079-4df8-9a89-9d8955f41312] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:26:12.443504 #15299]  INFO -- : [8bccd6b8-b079-4df8-9a89-9d8955f41312] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (21.74ms)
+I, [2022-06-20T02:26:12.443716 #15299]  INFO -- : [8bccd6b8-b079-4df8-9a89-9d8955f41312] Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 3.7ms | Allocations: 14923)
+I, [2022-06-20T02:26:19.045741 #15299]  INFO -- : [515ee4e2-ed73-45a9-bc7e-5491235ce0b3] Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc8dc551cc5cf6d8f323a444207e60d2a7ec38fa/1.jpg" for 10.16.33.253 at 2022-06-20 02:26:19 +0800
+I, [2022-06-20T02:26:19.046435 #15299]  INFO -- : [515ee4e2-ed73-45a9-bc7e-5491235ce0b3] Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+I, [2022-06-20T02:26:19.046478 #15299]  INFO -- : [515ee4e2-ed73-45a9-bc7e-5491235ce0b3]   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc8dc551cc5cf6d8f323a444207e60d2a7ec38fa", "filename"=>"1"}
+I, [2022-06-20T02:26:19.049288 #15299]  INFO -- : [515ee4e2-ed73-45a9-bc7e-5491235ce0b3] Redirected to http://10.16.33.253:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjMmx4ZVdWNGVEWTVObXQ1YW1aaFlqVjRiemcyTmpBNGNXbHFZd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpFdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWN4TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTA2LTE5VDE4OjMxOjE5LjA0OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--78b7912c9422468c4dcad77862b0470fb88afc3f/1.jpg
+I, [2022-06-20T02:26:19.049475 #15299]  INFO -- : [515ee4e2-ed73-45a9-bc7e-5491235ce0b3] Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1040)
+I, [2022-06-20T02:26:19.058499 #15299]  INFO -- : [eb9e6c71-8fc0-4854-927c-727f4ebd571d] Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjMmx4ZVdWNGVEWTVObXQ1YW1aaFlqVjRiemcyTmpBNGNXbHFZd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpFdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWN4TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTA2LTE5VDE4OjMxOjE5LjA0OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--78b7912c9422468c4dcad77862b0470fb88afc3f/1.jpg" for 10.16.33.253 at 2022-06-20 02:26:19 +0800
+I, [2022-06-20T02:26:19.059304 #15299]  INFO -- : [eb9e6c71-8fc0-4854-927c-727f4ebd571d] Processing by ActiveStorage::DiskController#show as JPEG
+I, [2022-06-20T02:26:19.059344 #15299]  INFO -- : [eb9e6c71-8fc0-4854-927c-727f4ebd571d]   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"1"}
+I, [2022-06-20T02:26:19.060782 #15299]  INFO -- : [eb9e6c71-8fc0-4854-927c-727f4ebd571d] Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 2863)
+I, [2022-06-20T02:26:57.305042 #15299]  INFO -- : [dadcb4fa-74b9-4027-97a3-abe28bee637b] Started GET "/images" for 10.16.192.45 at 2022-06-20 02:26:57 +0800
+I, [2022-06-20T02:26:57.306021 #15299]  INFO -- : [dadcb4fa-74b9-4027-97a3-abe28bee637b] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:26:57.326104 #15299]  INFO -- : [dadcb4fa-74b9-4027-97a3-abe28bee637b] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (18.39ms)
+I, [2022-06-20T02:26:57.326548 #15299]  INFO -- : [dadcb4fa-74b9-4027-97a3-abe28bee637b] Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 1.8ms | Allocations: 4161)
+I, [2022-06-20T02:26:57.811885 #15299]  INFO -- : [f0c3458c-7def-4e27-a1c3-b9a10afb8ff0] Started GET "/favicon.ico" for 10.16.192.45 at 2022-06-20 02:26:57 +0800
+F, [2022-06-20T02:26:57.812701 #15299] FATAL -- : [f0c3458c-7def-4e27-a1c3-b9a10afb8ff0]   
+[f0c3458c-7def-4e27-a1c3-b9a10afb8ff0] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[f0c3458c-7def-4e27-a1c3-b9a10afb8ff0]   
+I, [2022-06-20T02:27:56.546211 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69] Started POST "/images" for 10.16.33.253 at 2022-06-20 02:27:56 +0800
+I, [2022-06-20T02:27:56.551502 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69] Processing by ImagesController#create as */*
+I, [2022-06-20T02:27:56.551566 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69]   Parameters: {"file"=>#<ActionDispatch::Http::UploadedFile:0x00007f13cc20fd00 @tempfile=#<Tempfile:/tmp/RackMultipart20220620-15299-x8xd3v.jpg>, @original_filename="6.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"6.jpg\"\r\nContent-Type: image/jpeg\r\n">, "text/plain"=>[""]}
+I, [2022-06-20T02:27:56.646133 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69] [36m  Disk Storage (1.1ms) [0m[32mUploaded file to key: uqt2pxfioihftt3j2upu4s4iymzz (checksum: udlg36bhCeSmHVvcCcq5Aw==)[0m
+I, [2022-06-20T02:27:56.648338 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69] [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3facba99-08c2-4dc9-9d9f-ee6eda22c6d6) to Async(default) with arguments: #<GlobalID:0x00007f13cc26f520 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/6>>
+I, [2022-06-20T02:27:56.653299 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69] [active_model_serializers] Rendered ImageSerializer with ActiveModelSerializers::Adapter::Attributes (1.16ms)
+I, [2022-06-20T02:27:56.657177 #15299]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [3facba99-08c2-4dc9-9d9f-ee6eda22c6d6] Performing ActiveStorage::AnalyzeJob (Job ID: 3facba99-08c2-4dc9-9d9f-ee6eda22c6d6) from Async(default) enqueued at 2022-06-19T18:27:56Z with arguments: #<GlobalID:0x00007f13a4037708 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/6>>
+I, [2022-06-20T02:27:56.657793 #15299]  INFO -- : [74b0cb24-952c-47d8-9eaa-ea0767a57e69] Completed 201 Created in 106ms (Views: 6.6ms | ActiveRecord: 87.9ms | Allocations: 4729)
+I, [2022-06-20T02:27:56.660731 #15299]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [3facba99-08c2-4dc9-9d9f-ee6eda22c6d6] [36m  Disk Storage (0.9ms) [0m[34mDownloaded file from key: uqt2pxfioihftt3j2upu4s4iymzz[0m
+I, [2022-06-20T02:27:56.664331 #15299]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [3facba99-08c2-4dc9-9d9f-ee6eda22c6d6] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-20T02:27:56.822784 #15299]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [3facba99-08c2-4dc9-9d9f-ee6eda22c6d6] Performed ActiveStorage::AnalyzeJob (Job ID: 3facba99-08c2-4dc9-9d9f-ee6eda22c6d6) from Async(default) in 173.59ms
+I, [2022-06-20T02:28:10.970810 #15299]  INFO -- : [e5259f8b-6caa-4fda-afd6-5fab5f3a07b6] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:28:10 +0800
+I, [2022-06-20T02:28:10.971393 #15299]  INFO -- : [e5259f8b-6caa-4fda-afd6-5fab5f3a07b6] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:28:10.982213 #15299]  INFO -- : [e5259f8b-6caa-4fda-afd6-5fab5f3a07b6] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.64ms)
+I, [2022-06-20T02:28:10.982496 #15299]  INFO -- : [e5259f8b-6caa-4fda-afd6-5fab5f3a07b6] Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 1.1ms | Allocations: 4971)
+I, [2022-06-20T02:28:14.196777 #15299]  INFO -- : [f62f04ee-36e1-4053-9e13-0f6d6e5fea4b] Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d60ee61d9713cfa2a7fc8c5b6f1d764d9b86cc1/6.jpg" for 10.16.33.253 at 2022-06-20 02:28:14 +0800
+I, [2022-06-20T02:28:14.197346 #15299]  INFO -- : [f62f04ee-36e1-4053-9e13-0f6d6e5fea4b] Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+I, [2022-06-20T02:28:14.197383 #15299]  INFO -- : [f62f04ee-36e1-4053-9e13-0f6d6e5fea4b]   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d60ee61d9713cfa2a7fc8c5b6f1d764d9b86cc1", "filename"=>"6"}
+I, [2022-06-20T02:28:14.198335 #15299]  INFO -- : [f62f04ee-36e1-4053-9e13-0f6d6e5fea4b] Redirected to http://10.16.33.253:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkWEYwTW5CNFptbHZhV2htZEhRemFqSjFjSFUwY3pScGVXMTZlZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpZdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWMyTG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTA2LTE5VDE4OjMzOjE0LjE5OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--12e8a4d3e73d80bcf910f06fbbd45bfbacf8fa64/6.jpg
+I, [2022-06-20T02:28:14.198415 #15299]  INFO -- : [f62f04ee-36e1-4053-9e13-0f6d6e5fea4b] Completed 302 Found in 1ms (ActiveRecord: 0.1ms | Allocations: 467)
+I, [2022-06-20T02:28:14.204730 #15299]  INFO -- : [41300fb7-cfed-4910-9d85-50176911d265] Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkWEYwTW5CNFptbHZhV2htZEhRemFqSjFjSFUwY3pScGVXMTZlZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWpZdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWMyTG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTA2LTE5VDE4OjMzOjE0LjE5OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--12e8a4d3e73d80bcf910f06fbbd45bfbacf8fa64/6.jpg" for 10.16.33.253 at 2022-06-20 02:28:14 +0800
+I, [2022-06-20T02:28:14.205225 #15299]  INFO -- : [41300fb7-cfed-4910-9d85-50176911d265] Processing by ActiveStorage::DiskController#show as JPEG
+I, [2022-06-20T02:28:14.205256 #15299]  INFO -- : [41300fb7-cfed-4910-9d85-50176911d265]   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"6"}
+I, [2022-06-20T02:28:14.205559 #15299]  INFO -- : [41300fb7-cfed-4910-9d85-50176911d265] Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 147)
+I, [2022-06-20T02:29:05.290316 #15299]  INFO -- : [d2e42cd2-91c2-43fb-aaaa-8467ef12b004] Started GET "/images" for 10.16.33.253 at 2022-06-20 02:29:05 +0800
+I, [2022-06-20T02:29:05.290715 #15299]  INFO -- : [d2e42cd2-91c2-43fb-aaaa-8467ef12b004] Processing by ImagesController#index as HTML
+I, [2022-06-20T02:29:05.301276 #15299]  INFO -- : [d2e42cd2-91c2-43fb-aaaa-8467ef12b004] [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.8ms)
+I, [2022-06-20T02:29:05.301513 #15299]  INFO -- : [d2e42cd2-91c2-43fb-aaaa-8467ef12b004] Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.9ms | Allocations: 4934)
+W, [2022-06-21T04:29:37.953505 #28322]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T04:33:06.537135 #28423]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T04:39:40.019548 #28728]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T04:39:50.057010 #28751]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T04:55:33.501146 #29574]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T04:57:00.291303 #29604]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:22:08.798806 #31026]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:29:37.800299 #31531]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:30:26.763685 #31627]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:32:15.440670 #31750]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:32:22.861585 #31766]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-21T05:32:24.784885 #31766]  INFO -- : [36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: dtwq49apwary9atuf4djsgfruyxw (checksum: QbtvjVBDhWXFtTE+oG4daQ==)[0m
+I, [2022-06-21T05:32:24.785608 #31766]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: fe96c917-a784-4417-9048-92c0899de488) to Async(default) with arguments: #<GlobalID:0x000055861460c8a0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/12>>
+I, [2022-06-21T05:32:24.787515 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [fe96c917-a784-4417-9048-92c0899de488] Performing ActiveStorage::AnalyzeJob (Job ID: fe96c917-a784-4417-9048-92c0899de488) from Async(default) enqueued at 2022-06-20T21:32:24Z with arguments: #<GlobalID:0x000055861461a248 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/12>>
+I, [2022-06-21T05:32:24.788652 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [fe96c917-a784-4417-9048-92c0899de488] [36m  Disk Storage (0.0ms) [0m[34mDownloaded file from key: dtwq49apwary9atuf4djsgfruyxw[0m
+I, [2022-06-21T05:32:24.788772 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [fe96c917-a784-4417-9048-92c0899de488] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:32:24.867787 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [fe96c917-a784-4417-9048-92c0899de488] Performed ActiveStorage::AnalyzeJob (Job ID: fe96c917-a784-4417-9048-92c0899de488) from Async(default) in 81.89ms
+I, [2022-06-21T05:32:24.943089 #31766]  INFO -- : [36m  Disk Storage (0.2ms) [0m[32mUploaded file to key: iaaxy1j1u43xd7ylqfpruqn0lt0b (checksum: EfYqR1clM9CjbRHricKGJg==)[0m
+I, [2022-06-21T05:32:24.943425 #31766]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 74e95bf7-f5ca-4c9e-a383-879528e4b337) to Async(default) with arguments: #<GlobalID:0x000055861462d050 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/13>>
+I, [2022-06-21T05:32:24.944228 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [74e95bf7-f5ca-4c9e-a383-879528e4b337] Performing ActiveStorage::AnalyzeJob (Job ID: 74e95bf7-f5ca-4c9e-a383-879528e4b337) from Async(default) enqueued at 2022-06-20T21:32:24Z with arguments: #<GlobalID:0x00007f872406a628 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/13>>
+I, [2022-06-21T05:32:24.944897 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [74e95bf7-f5ca-4c9e-a383-879528e4b337] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: iaaxy1j1u43xd7ylqfpruqn0lt0b[0m
+I, [2022-06-21T05:32:25.018046 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [74e95bf7-f5ca-4c9e-a383-879528e4b337] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:32:25.227628 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [74e95bf7-f5ca-4c9e-a383-879528e4b337] Performed ActiveStorage::AnalyzeJob (Job ID: 74e95bf7-f5ca-4c9e-a383-879528e4b337) from Async(default) in 283.88ms
+I, [2022-06-21T05:32:25.229192 #31766]  INFO -- : [36m  Disk Storage (211.3ms) [0m[32mUploaded file to key: 4p2k0t7ucleurqby5kfm1xqbd8c8 (checksum: kB5zVo9ITsSizsFCSTnUrg==)[0m
+I, [2022-06-21T05:32:25.230426 #31766]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d213a548-974c-4cbb-b78b-b3b08d044d68) to Async(default) with arguments: #<GlobalID:0x00007f8724079790 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/14>>
+I, [2022-06-21T05:32:25.233114 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [d213a548-974c-4cbb-b78b-b3b08d044d68] Performing ActiveStorage::AnalyzeJob (Job ID: d213a548-974c-4cbb-b78b-b3b08d044d68) from Async(default) enqueued at 2022-06-20T21:32:25Z with arguments: #<GlobalID:0x00007f8724082d18 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/14>>
+I, [2022-06-21T05:32:25.235359 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [d213a548-974c-4cbb-b78b-b3b08d044d68] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: 4p2k0t7ucleurqby5kfm1xqbd8c8[0m
+I, [2022-06-21T05:32:25.235784 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [d213a548-974c-4cbb-b78b-b3b08d044d68] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:32:25.504978 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [d213a548-974c-4cbb-b78b-b3b08d044d68] Performed ActiveStorage::AnalyzeJob (Job ID: d213a548-974c-4cbb-b78b-b3b08d044d68) from Async(default) in 273.85ms
+I, [2022-06-21T05:32:25.789183 #31766]  INFO -- : [36m  Disk Storage (0.9ms) [0m[32mUploaded file to key: qrkxtb3t15gd2y1nziakayvtg2kg (checksum: N6ehLhDYE4FJN5S+ea2k/w==)[0m
+I, [2022-06-21T05:32:25.790338 #31766]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 5c474f18-471b-4871-b786-d0434f541c0e) to Async(default) with arguments: #<GlobalID:0x0000558614665ba8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/15>>
+I, [2022-06-21T05:32:25.793032 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [5c474f18-471b-4871-b786-d0434f541c0e] Performing ActiveStorage::AnalyzeJob (Job ID: 5c474f18-471b-4871-b786-d0434f541c0e) from Async(default) enqueued at 2022-06-20T21:32:25Z with arguments: #<GlobalID:0x00007f87240978d0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/15>>
+I, [2022-06-21T05:32:25.795227 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [5c474f18-471b-4871-b786-d0434f541c0e] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: qrkxtb3t15gd2y1nziakayvtg2kg[0m
+I, [2022-06-21T05:32:25.795696 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [5c474f18-471b-4871-b786-d0434f541c0e] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:32:26.060531 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [5c474f18-471b-4871-b786-d0434f541c0e] Performed ActiveStorage::AnalyzeJob (Job ID: 5c474f18-471b-4871-b786-d0434f541c0e) from Async(default) in 269.5ms
+I, [2022-06-21T05:32:26.303569 #31766]  INFO -- : [36m  Disk Storage (26.6ms) [0m[32mUploaded file to key: w4379akf88ph2fhimp9uarqolime (checksum: MZoU8Q2avbkl/UHtMynSdQ==)[0m
+I, [2022-06-21T05:32:26.304907 #31766]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 93880e63-8e8b-4ffc-bbfc-8092d3cd0ce1) to Async(default) with arguments: #<GlobalID:0x0000558614682d98 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/16>>
+I, [2022-06-21T05:32:26.307670 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [93880e63-8e8b-4ffc-bbfc-8092d3cd0ce1] Performing ActiveStorage::AnalyzeJob (Job ID: 93880e63-8e8b-4ffc-bbfc-8092d3cd0ce1) from Async(default) enqueued at 2022-06-20T21:32:26Z with arguments: #<GlobalID:0x0000558613a71e00 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/16>>
+I, [2022-06-21T05:32:26.670947 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [93880e63-8e8b-4ffc-bbfc-8092d3cd0ce1] [36m  Disk Storage (65.9ms) [0m[34mDownloaded file from key: w4379akf88ph2fhimp9uarqolime[0m
+I, [2022-06-21T05:32:26.671058 #31766]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [93880e63-8e8b-4ffc-bbfc-8092d3cd0ce1] Performed ActiveStorage::AnalyzeJob (Job ID: 93880e63-8e8b-4ffc-bbfc-8092d3cd0ce1) from Async(default) in 365.48ms
+W, [2022-06-21T05:32:29.805601 #31781]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:33:17.812104 #31819]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:33:40.644272 #31844]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:33:53.673437 #31858]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-21T05:33:54.443824 #31858]  INFO -- : Migrating to CreateDeceasedPosts (20220619160107)
+I, [2022-06-21T05:33:54.753296 #31858]  INFO -- : Migrating to CreateImages (20220619160200)
+I, [2022-06-21T05:33:55.037332 #31858]  INFO -- : Migrating to CreateUsers (20220619160225)
+I, [2022-06-21T05:33:55.321094 #31858]  INFO -- : Migrating to CreateActiveStorageTables (20220619172130)
+I, [2022-06-21T05:33:55.582996 #31858]  INFO -- : Migrating to ChangeDeceasedDatetimes (20220619180216)
+W, [2022-06-21T05:34:04.516557 #31883]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:34:19.285304 #31916]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+I, [2022-06-21T05:34:19.640798 #31916]  INFO -- : [36m  Disk Storage (1.3ms) [0m[32mUploaded file to key: qx6mz1w8nwhfzenpdw4nvy9iazey (checksum: QbtvjVBDhWXFtTE+oG4daQ==)[0m
+I, [2022-06-21T05:34:19.643590 #31916]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a14934bb-3286-422f-9f0e-3ff2b0f67001) to Async(default) with arguments: #<GlobalID:0x00005614ca1895b8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+I, [2022-06-21T05:34:19.650989 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a14934bb-3286-422f-9f0e-3ff2b0f67001] Performing ActiveStorage::AnalyzeJob (Job ID: a14934bb-3286-422f-9f0e-3ff2b0f67001) from Async(default) enqueued at 2022-06-20T21:34:19Z with arguments: #<GlobalID:0x00007f943402ede0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/1>>
+I, [2022-06-21T05:34:19.789021 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a14934bb-3286-422f-9f0e-3ff2b0f67001] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: qx6mz1w8nwhfzenpdw4nvy9iazey[0m
+I, [2022-06-21T05:34:19.789223 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a14934bb-3286-422f-9f0e-3ff2b0f67001] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:34:19.863357 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a14934bb-3286-422f-9f0e-3ff2b0f67001] Performed ActiveStorage::AnalyzeJob (Job ID: a14934bb-3286-422f-9f0e-3ff2b0f67001) from Async(default) in 218.78ms
+I, [2022-06-21T05:34:19.863675 #31916]  INFO -- : [36m  Disk Storage (74.8ms) [0m[32mUploaded file to key: s25olc23rdrqgkiwwq8f2z9swyes (checksum: EfYqR1clM9CjbRHricKGJg==)[0m
+I, [2022-06-21T05:34:19.863983 #31916]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 67266dc4-4c9f-481f-ba98-942b0d35c172) to Async(default) with arguments: #<GlobalID:0x00007f9434069c60 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+I, [2022-06-21T05:34:19.864724 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [67266dc4-4c9f-481f-ba98-942b0d35c172] Performing ActiveStorage::AnalyzeJob (Job ID: 67266dc4-4c9f-481f-ba98-942b0d35c172) from Async(default) enqueued at 2022-06-20T21:34:19Z with arguments: #<GlobalID:0x00007f943406f2c8 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/2>>
+I, [2022-06-21T05:34:19.865388 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [67266dc4-4c9f-481f-ba98-942b0d35c172] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: s25olc23rdrqgkiwwq8f2z9swyes[0m
+I, [2022-06-21T05:34:19.963469 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [67266dc4-4c9f-481f-ba98-942b0d35c172] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:34:20.055121 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [67266dc4-4c9f-481f-ba98-942b0d35c172] Performed ActiveStorage::AnalyzeJob (Job ID: 67266dc4-4c9f-481f-ba98-942b0d35c172) from Async(default) in 190.94ms
+I, [2022-06-21T05:34:20.055638 #31916]  INFO -- : [36m  Disk Storage (92.2ms) [0m[32mUploaded file to key: qne4i7jqo9c5hka1cpostv5pzr46 (checksum: kB5zVo9ITsSizsFCSTnUrg==)[0m
+I, [2022-06-21T05:34:20.055951 #31916]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: dfb39d71-08e1-4c74-8da2-6d1ad330b46c) to Async(default) with arguments: #<GlobalID:0x00007f9434086b80 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+I, [2022-06-21T05:34:20.056710 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [dfb39d71-08e1-4c74-8da2-6d1ad330b46c] Performing ActiveStorage::AnalyzeJob (Job ID: dfb39d71-08e1-4c74-8da2-6d1ad330b46c) from Async(default) enqueued at 2022-06-20T21:34:20Z with arguments: #<GlobalID:0x00005614c9678480 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/3>>
+I, [2022-06-21T05:34:20.057336 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [dfb39d71-08e1-4c74-8da2-6d1ad330b46c] [36m  Disk Storage (0.1ms) [0m[34mDownloaded file from key: qne4i7jqo9c5hka1cpostv5pzr46[0m
+I, [2022-06-21T05:34:20.057497 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [dfb39d71-08e1-4c74-8da2-6d1ad330b46c] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:34:20.523818 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [dfb39d71-08e1-4c74-8da2-6d1ad330b46c] Performed ActiveStorage::AnalyzeJob (Job ID: dfb39d71-08e1-4c74-8da2-6d1ad330b46c) from Async(default) in 467.61ms
+I, [2022-06-21T05:34:20.584948 #31916]  INFO -- : [36m  Disk Storage (60.4ms) [0m[32mUploaded file to key: 8nheestqine9ikajilf69qah5z14 (checksum: N6ehLhDYE4FJN5S+ea2k/w==)[0m
+I, [2022-06-21T05:34:20.586251 #31916]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 4a84678c-2497-431f-afba-69bc45ae849f) to Async(default) with arguments: #<GlobalID:0x00005614ca1d7010 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+I, [2022-06-21T05:34:20.589002 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [4a84678c-2497-431f-afba-69bc45ae849f] Performing ActiveStorage::AnalyzeJob (Job ID: 4a84678c-2497-431f-afba-69bc45ae849f) from Async(default) enqueued at 2022-06-20T21:34:20Z with arguments: #<GlobalID:0x00007f943409fcc0 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/4>>
+I, [2022-06-21T05:34:20.591925 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [4a84678c-2497-431f-afba-69bc45ae849f] [36m  Disk Storage (0.6ms) [0m[34mDownloaded file from key: 8nheestqine9ikajilf69qah5z14[0m
+I, [2022-06-21T05:34:20.592804 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [4a84678c-2497-431f-afba-69bc45ae849f] Skipping image analysis because the ruby-vips gem isn't installed
+I, [2022-06-21T05:34:20.972779 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [4a84678c-2497-431f-afba-69bc45ae849f] Performed ActiveStorage::AnalyzeJob (Job ID: 4a84678c-2497-431f-afba-69bc45ae849f) from Async(default) in 385.8ms
+I, [2022-06-21T05:34:21.422410 #31916]  INFO -- : [36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: v02uh5dh12y9y2rf5ry3f2f8xh8j (checksum: MZoU8Q2avbkl/UHtMynSdQ==)[0m
+I, [2022-06-21T05:34:21.422948 #31916]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e1d45da7-07ab-4043-8df9-4f6d84195109) to Async(default) with arguments: #<GlobalID:0x00005614ca1edf40 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+I, [2022-06-21T05:34:21.424207 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [e1d45da7-07ab-4043-8df9-4f6d84195109] Performing ActiveStorage::AnalyzeJob (Job ID: e1d45da7-07ab-4043-8df9-4f6d84195109) from Async(default) enqueued at 2022-06-20T21:34:21Z with arguments: #<GlobalID:0x00007f94340bb830 @uri=#<URI::GID gid://gebira-backent/ActiveStorage::Blob/5>>
+I, [2022-06-21T05:34:21.871312 #31916]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [e1d45da7-07ab-4043-8df9-4f6d84195109] Performed ActiveStorage::AnalyzeJob (Job ID: e1d45da7-07ab-4043-8df9-4f6d84195109) from Async(default) in 447.93ms
+W, [2022-06-21T05:34:28.246902 #31934]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".
+W, [2022-06-21T05:42:11.264988 #32281]  WARN -- : You are running SQLite in production, this is generally not recommended. You can disable this warning by setting "config.active_record.sqlite3_production_warning=false".

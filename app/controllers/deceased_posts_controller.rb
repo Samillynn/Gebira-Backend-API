@@ -20,7 +20,11 @@ class DeceasedPostsController < ApplicationController
   def create
     @deceased_post = DeceasedPost.new(deceased_post_params)
 
-    if @deceased_post.save
+    if @deceased_post.save!
+      puts "permitted params"
+      p deceased_post_params
+      puts "deceased_post"
+      p @deceased_post
       render json: @deceased_post, status: :created, location: @deceased_post
     else
       render json: @deceased_post.errors, status: :unprocessable_entity
@@ -49,6 +53,8 @@ class DeceasedPostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deceased_post_params
-      params.require(:deceased_post).permit(:user_id, :name, :gender, :age, :date_of_birth, :date_found, :location, :vague_location, :hair_length, :hair_color, :skin_color, :description)
+      result = params.require(:deceased_post).permit(:user_id, :image_ids,  :name, :gender, :age, :date_of_birth, :date_found, :location, :vague_location, :hair_length, :hair_color, :skin_color, :description)
+      result[:image_ids] = params[:image_ids]
+      result
     end
 end
